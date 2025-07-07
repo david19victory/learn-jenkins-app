@@ -85,7 +85,24 @@ pipeline {
             }
         }
 
-       
+        stage('Prod E2E') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.39.0-jammy'
+                    reuseNode true
+                }
+            }
+
+            environment {
+                CI_ENVIRONMENT_URL = 'https://subtle-bienenstitch-2868a0.netlify.app'
+            }
+
+            steps {
+                sh '''
+                    npx playwright test
+                '''
+            }
+        }
     }
 
     post {
