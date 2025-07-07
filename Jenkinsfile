@@ -20,5 +20,12 @@ pipeline {
                 '''
             }
         }
+        stage('Test') {
+            echo 'Test stage'
+            sh '''
+                grep build/index.html
+                npm test
+            '''
+        }
     }
 }
