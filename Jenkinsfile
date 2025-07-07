@@ -8,7 +8,7 @@ pipeline {
 
     stages {
         // This is a comment
-        /*
+        
         stage('Build') {
             agent {
                 docker {
@@ -66,7 +66,7 @@ pipeline {
                 }
             }
         }
-        */
+        
         stage('Deploy') {
             agent {
                 docker {
