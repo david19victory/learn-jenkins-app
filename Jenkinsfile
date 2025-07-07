@@ -8,9 +8,6 @@ pipeline {
 
     stages {
         // This is a comment
-        /*
-            line 1
-            line 2
         
         stage('Build') {
             agent {
@@ -30,7 +27,7 @@ pipeline {
                 '''
             }
         }
-        */
+        
         stage('Run Tests') {
             parallel {
                 stage('Unit Test') {
