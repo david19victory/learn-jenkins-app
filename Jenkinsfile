@@ -4,6 +4,7 @@ pipeline {
     environment {
         NETLIFY_SITE_ID = 'b7384907-37c9-4d2a-8e24-4b97d78f46f2'
         NETLIFY_AUTH_TOKEN = credentials('netlify-token')
+        REACT_APP_VERSION = "1.2.$BUILD_ID"
     }
 
     stages {
@@ -104,14 +105,6 @@ pipeline {
                 sh '''
                     npx playwright test
                 '''
-            }
-        }
-
-        stage('Approval') {
-            steps {
-                timeout(time: 15, unit: 'MINUTES') {
-                    input message: 'Do you wish to deploy to production?', ok: 'Yes, I am sure!'
-                }
             }
         }
 
